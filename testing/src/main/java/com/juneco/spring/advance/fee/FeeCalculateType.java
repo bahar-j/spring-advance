@@ -6,20 +6,20 @@ import java.util.function.Function;
 
 public enum FeeCalculateType {
 
-    DECIMAL_FIRST_HALF_UP("소수점 첫째자리 반올림", (amount) -> {
+    DECIMAL_FIRST_HALF_UP("소수점 첫째자리 반올림", amount -> {
         validateAmount(amount);
         return calculate(amount, 0, RoundingMode.HALF_UP);
     }),
 
-    DECIMAL_FIRST_UP("소수점 첫째자리 올림", (amount) -> {
+    DECIMAL_FIRST_UP("소수점 첫째자리 올림", amount -> {
         validateAmount(amount);
         return calculate(amount, 0, RoundingMode.UP);
     }),
-    DECIMAL_FIRST_DOWN("소수점 첫째자리 버림", (amount) -> {
+    DECIMAL_FIRST_DOWN("소수점 첫째자리 버림", amount -> {
         validateAmount(amount);
         return calculate(amount, 0, RoundingMode.DOWN);
     }),
-    WON_UNIT_CUT("원단위 버림", (amount) -> {
+    WON_UNIT_CUT("원단위 버림", amount -> {
         validateAmount(amount);
         return calculate(amount, -1, RoundingMode.DOWN);
     });

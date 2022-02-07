@@ -5,7 +5,8 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
-class FeeCalculateTypeTest {
+
+class JUnitTest {
 
     @Test
     public void caculate_금액이_주어지면_원단위_반올림_결과가_변환된다 () throws Exception {
@@ -20,14 +21,14 @@ class FeeCalculateTypeTest {
         assertThat(case2, is(490L));
 
         final long case3 = feeCalculator.calcaulate(-500);
-        assertThat(case2, is(-500L));
+        assertThat(case3, is(-500L));
 
         final long case4 = feeCalculator.calcaulate(-495);
-        assertThat(case2, is(-490L));
+        assertThat(case4, is(-490L));
     }
 
     @Test
-    public void caculate_음수가입력되면_throwNagativeNumberException () throws Exception {
+    public void caculate_음수가입력되면_throwNumberFormatException () throws Exception {
         //given
         FeeCalculateType feeCalculator = FeeCalculateType.WON_UNIT_CUT;
 
@@ -41,4 +42,5 @@ class FeeCalculateTypeTest {
 
         assertTrue(actualMessage.contains(expectedMessage));
     }
+
 }
