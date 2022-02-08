@@ -2,14 +2,15 @@ package com.juneco.spring.advance.fee;
 
 import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.MatcherAssert.*;
-import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class JUnitTest {
 
     @Test
-    public void caculate_금액이_주어지면_원단위_반올림_결과가_변환된다 () throws Exception {
+    void caculate_금액이_주어지면_원단위_반올림_결과가_변환된다 () throws Exception {
         //given
         FeeCalculateType feeCalculator = FeeCalculateType.WON_UNIT_CUT;
 
@@ -28,7 +29,7 @@ class JUnitTest {
     }
 
     @Test
-    public void caculate_음수가입력되면_throwNumberFormatException () throws Exception {
+    void caculate_음수가입력되면_throwNumberFormatException () throws Exception {
         //given
         FeeCalculateType feeCalculator = FeeCalculateType.WON_UNIT_CUT;
 

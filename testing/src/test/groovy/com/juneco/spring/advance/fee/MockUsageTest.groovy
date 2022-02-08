@@ -17,13 +17,26 @@ class MockUsageTest extends Specification {
         990L == FeeCalculateType.WON_UNIT_CUT.calcaulate(amount)
     }
 
+    def "오버로딩 메서드 모킹 테스트"() {
+        given:
+        def mockAmountService = Mock(AmountService.class)
+
+        when:
+        long amount = mockAmountService.getAmount(998)
+
+        then:
+        mockAmountService.getAmount(998) >> 999
+        999 == amount
+        990L == FeeCalculateType.WON_UNIT_CUT.calcaulate(amount)
+    }
+
     def "Vip는 이벤트에 참여하면 포인트 적립이 2번 발생한다."() {
         given:
         def mockCustomerRepository = Mock(CustomerRepository)
         CustomerService customerService = new CustomerService(mockCustomerRepository)
         long customerId = 1
         long point = 1000
-        def customer = new Customer("jojoldu", "jojoldu@gmail.com", true)
+        def customer = new Customer("june", "june@gmail.com", true)
 
         when:
         customerService.joinEvent(customerId, point)

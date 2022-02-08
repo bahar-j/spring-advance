@@ -1,6 +1,6 @@
 package com.juneco.spring.advance.fee
 
-import org.springframework.boot.test.context.SpringBootTest
+
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -9,13 +9,13 @@ import java.math.RoundingMode
 class SpockTest extends Specification {
 
     def "495를 원단위로 반올림하면 500이 된다"() {
-        given:
+        given: "495가 주어지고"
         BigDecimal 금액 = BigDecimal.valueOf(495)
 
-        when:
+        when: "원단위 반올림하면"
         BigDecimal 원단위_반올림 = 금액.setScale(-1, RoundingMode.HALF_UP)
 
-        then:
+        then: "500이 된다"
         원단위_반올림 == 500
     }
 
@@ -56,4 +56,5 @@ class SpockTest extends Specification {
         def e = thrown(NumberFormatException.class)
         e.message == "음수는 허용하지 않습니다"
     }
+
 }
